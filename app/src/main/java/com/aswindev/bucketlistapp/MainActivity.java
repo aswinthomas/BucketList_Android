@@ -14,7 +14,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setupClickListeners();
+    }
 
+    private void setupClickListeners() {
         thingsToDoCard = findViewById(R.id.card_view_thingstodo);
         placesToGoCard = findViewById(R.id.card_view_placestogo);
 

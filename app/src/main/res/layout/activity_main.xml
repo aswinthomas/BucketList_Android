@@ -14,15 +14,20 @@
             android:scaleType="centerCrop"
             android:src="@drawable/heading" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/gradient_background" />
+
         <TextView
             android:id="@+id/text_view_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="bottom|center_horizontal"
             android:fontFamily="sans-serif-medium"
             android:text="My Bucket List"
-            android:textColor="#474F6A"
-            android:textSize="32sp" />
+            android:textColor="#DEE2F1"
+            android:textSize="38sp" />
 
     </FrameLayout>
 

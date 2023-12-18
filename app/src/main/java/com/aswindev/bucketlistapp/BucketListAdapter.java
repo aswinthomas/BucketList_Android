@@ -4,13 +4,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class BucketListAdapter extends RecyclerView.Adapter<BucketListAdapter.BucketListViewHolder> {
-    private BucketListItem[] bucketListItems;
+    private final BucketListItem[] bucketListItems;
 
     public BucketListAdapter(BucketListItem[] bucketListItems) {
         this.bucketListItems = bucketListItems;
@@ -30,25 +31,30 @@ public class BucketListAdapter extends RecyclerView.Adapter<BucketListAdapter.Bu
 
     @Override
     public void onBindViewHolder(@NonNull BucketListViewHolder holder, int position) {
-        holder.bind(bucketListItems[position]);
+        holder.bind(bucketListItems[position], position);
     }
 
 
     static class BucketListViewHolder extends RecyclerView.ViewHolder {
-        private TextView itemTitle, itemDescription;
-        private ImageView itemImage;
+        private final TextView itemTitle;
+        private final TextView itemDescription;
+        private final ImageView itemImage;
+        private final RatingBar itemRating;
 
         public BucketListViewHolder(@NonNull View itemView) {
             super(itemView);
             itemImage = itemView.findViewById(R.id.image_view_item_icon);
             itemDescription = itemView.findViewById(R.id.text_view_item_description);
             itemTitle = itemView.findViewById(R.id.text_view_item_title);
+            itemRating = itemView.findViewById(R.id.rating_bar);
         }
 
-        public void bind(BucketListItem bucketListItem) {
+        public void bind(BucketListItem bucketListItem, int position) {
             itemImage.setImageResource(bucketListItem.image);
-            itemTitle.setText(bucketListItem.name);
+            String titleStr = position + 1 + ". " + bucketListItem.name;
+            itemTitle.setText(titleStr);
             itemDescription.setText(bucketListItem.description);
+            itemRating.setRating(bucketListItem.rating);
         }
     }
 }
